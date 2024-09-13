@@ -1,0 +1,24 @@
+{
+  "eventosPassados": [
+    {
+      "id": 1,
+      "titulo": "Stand-Up",
+      "descricaoLink": "descricao.html",
+      "imagemCapa": "../images/events.cover/thiago-ventura.png",
+      "artista": {
+        "nome": "Tiago Ventura",
+        "tipo": "Influencer",
+        "imagemPerfil": "../images/profile/eventosan-thiago.jpg"
+      },
+      "estatisticas": {
+        "ouvintes": "100k",
+        "likes": "2.5k",
+        "comentarios": "924k"
+      },
+      "acoes": {
+        "curtir": "#",
+        "bookmark": "#"
+      }
+    }
+  ]
+}

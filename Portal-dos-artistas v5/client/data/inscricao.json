@@ -1,0 +1,13 @@
+{
+    "eventos": [
+        {
+            "nome": "Evento A"
+        },
+        {
+            "nome": "Evento B"
+        },
+        {
+            "nome": "Evento C"
+        }
+    ]
+}
