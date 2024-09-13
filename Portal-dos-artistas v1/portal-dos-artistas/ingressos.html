@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .ticket-container {
+            width: 350px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .ticket-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .qr-code {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .qr-code img {
+            width: 100px;
+            height: 100px;
+            border: 2px dashed #000;
+        }
+
+        .code {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .ticket-info {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .ticket-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .ticket-info .bold {
+            font-weight: bold;
+        }
+
+        .payment-info {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .instructions {
+            font-size: 12px;
+            color: #555;
+            text-align: left;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ticket-container">
+        <div class="ticket-header">The Town - Dia 12</div>
+
+        <div class="qr-code">
+            <img src="https://via.placeholder.com/100x100.png?text=QR+Code" alt="QR Code">
+            <div class="code">
+                Código<br>80906529670517
+            </div>
+        </div>
+
+        <div class="ticket-info">
+            <p class="bold">ELLEN VITÓRIA SIQUEIRA OLIVEIRA</p>
+            <p>CPF <span class="bold">xxx.xxx.xxx-xx</span></p>
+            <p><span class="bold">Autódromo de Interlagos</span></p>
+            <p>São Paulo/ SP</p>
+            <p>THE TOWN - SÁBADO</p>
+        </div>
+
+        <div class="payment-info">
+            <p><span class="bold">R$ 565,00</span></p>
+            <p>Transação: CHAR_C68ER45-89RW-5T6W-CV67-963243TYYU7I9</p>
+        </div>
+
+        <div class="instructions">
+            <p>Mostre o voucher no seu smartphone ou impresso, acompanhado de um documento oficial válido com foto. Certifique-se de que o código de barras esteja legível.</p>
+        </div>
+    </div>
+</body>
+
+</html>
