@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresso</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .ticket-container {
+            width: 380px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .ticket-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .qr-code {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .qr-code img {
+            width: 100px;
+            height: 100px;
+            border: 2px dashed #000;
+            margin-right: 15px;
+        }
+
+        .code {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .ticket-info {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .ticket-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .ticket-info .bold {
+            font-weight: bold;
+        }
+
+        .payment-info {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .instructions {
+            font-size: 12px;
+            color: #555;
+            text-align: left;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .print-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .print-button:hover {
+            background-color: #0056b3;
+        }
+
+        @media print {
+            body {
+                visibility: hidden;
+            }
+            .ticket-container {
+                position: static;
+                transform: none;
+                visibility: visible;
+            }
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ticket-container">
+        <div id="ticket-header" class="ticket-header">Carregando...</div>
+
+        <div class="qr-code">
+            <img id="qr-code" src="#" alt="QR Code">
+            <div id="code" class="code">Código<br>Carregando...</div>
+        </div>
+
+        <div class="ticket-info">
+            <p id="name" class="bold">Carregando...</p>
+            <p>CPF <span id="cpf" class="bold">Carregando...</span></p>
+            <p id="location"><span class="bold">Carregando...</span></p>
+            <p id="city">Carregando...</p>
+            <p id="event-day">Carregando...</p>
+        </div>
+
+        <div class="payment-info">
+            <p id="price"><span class="bold">Carregando...</span></p>
+            <p id="transaction">Carregando...</p>
+        </div>
+
+        <div id="instructions" class="instructions">
+            <p>Carregando...</p>
+        </div>
+
+        <!-- Botão de Imprimir -->
+        <button class="print-button" onclick="window.print()">Imprimir Ingresso</button>
+    </div>
+
+    <!-- Carrega o script JavaScript -->
+    <script src="../js/ingressos.js"></script>
+</body>
+
+</html>
