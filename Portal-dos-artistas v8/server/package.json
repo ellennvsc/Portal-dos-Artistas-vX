@@ -1,0 +1,19 @@
+{
+  "name": "portal-dos-artistas",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "loadDB": "node database/load.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.19.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "prisma": "^5.19.1",
+    "sqlite": "^5.1.1",
+    "sqlite-async": "^1.0.0"
+  }
+}
