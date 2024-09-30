@@ -1,0 +1,50 @@
+/* Wrapper for horizontal scrolling */
+.events-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 1rem 0; /* Adjusted to match Bootstrap spacing */
+}
+
+#events-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/* Ensure each event block has a consistent width and margin */
+.custom-block {
+    display: inline-block;
+    width: 100%;
+    max-width: 500px; /* Adjust based on your design */
+    margin-right: 1rem; /* Adjusted to match Bootstrap spacing */
+    vertical-align: top;
+}
+
+/* Ensure image and text are styled consistently */
+.custom-block-image-wrap img {
+    width: 100%;
+    height: auto;
+}
+
+.custom-block-info {
+    padding: 1rem; /* Adjusted to match Bootstrap spacing */
+}
+
+.profile-block {
+    display: flex;
+    align-items: center;
+}
+
+.profile-block img {
+    border-radius: 50%;
+    width: 3rem; /* Adjusted to match Bootstrap spacing */
+    height: 3rem; /* Adjusted to match Bootstrap spacing */
+    margin-right: 0.5rem; /* Adjusted to match Bootstrap spacing */
+}
+
+.custom-btn {
+    margin-top: 0.5rem; /* Adjusted to match Bootstrap spacing */
+}
+
+.custom-block-bottom a {
+    margin-right: 0.5rem; /* Adjusted to match Bootstrap spacing */
+}
