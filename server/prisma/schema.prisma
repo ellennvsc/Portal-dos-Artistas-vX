@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Evento {
+  EventoID           Int                @id @default(autoincrement())
+  ownerID            Int
+  NomeEvento         String //  String para textos
+  Descricao          String //  String para textos
+  DataHora           DateTime
+  Localizacao        String //  String para textos
+  ImagemCartaz       String? //  String para textos, opcional
+  DataPublicacao     DateTime           @default(now())
+  InscricoesEventos  InscricoesEvento[]
+  Tickets            Ticket[]
+  owner              Usuario            @relation(fields: [ownerID], references: [UsuarioID])
+}
+
+model InscricoesEvento {
+  InscricaoEventoID Int      @id @default(autoincrement())
+  EventoID          Int
+  UsuarioID         Int
+  DataInscricao     DateTime
+  Evento            Evento   @relation(fields: [EventoID], references: [EventoID])
+  Usuario           Usuario  @relation(fields: [UsuarioID], references: [UsuarioID])
+}
+
+model Usuario {
+  UsuarioID         Int                @id @default(autoincrement())
+  NomeCompleto      String
+  Email             String             @unique
+  Senha             String
+  Telefone          String
+  DataNascimento    DateTime
+  InscricoesEventos InscricoesEvento[]
+  Tickets           Ticket[]
+  Eventos           Evento[]
+}
+
+model Ticket {
+  TicketID     Int    @id @default(autoincrement())
+  eventId      Int
+  ownerId      Int
+  qrCode       String
+  code         String @default(uuid())
+  cpf          String
+  price        String
+  transaction  String
+  instructions String
+
+  dataEmissao DateTime @default(now())
+  usuario     Usuario  @relation(fields: [ownerId], references: [UsuarioID])
+  evento      Evento   @relation(fields: [eventId], references: [EventoID])
+}
