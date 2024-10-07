@@ -1,7 +1,7 @@
 @domain = http://localhost:3000
 
 ###
-GET {{domain}}/
+GET {{domain}}/events
 
 ###
 

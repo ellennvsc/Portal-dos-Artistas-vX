@@ -134,80 +134,79 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-floating">
-                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" required="">
+                                    <input type="text" name="cpf" id="cpf" class="form-control" placeholder="CPF" required>
                                     <label for="cpf">CPF</label>
                                 </div>
                             </div>
-
+                    
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-floating">
-                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email" required="">
+                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email" required>
                                     <label for="email">Email</label>
                                 </div>
                             </div>
-
+                    
                             <div class="form-floating">
-                                <select name="evento" id="evento" class="form-control" required="">
+                                <select name="evento" id="evento" class="form-control" required>
                                     <!-- Os eventos serão carregados aqui via JavaScript -->
                                 </select>
                                 <label for="evento">Escolha o evento</label>
                             </div>
-
+                    
                             <div class="col-lg-12 col-12 mt-4">
                                 <div class="payment-methods">
                                     <h4>Método de pagamento:</h4>
                                     <div>
-                                        <input type="radio" id="pagamento-cartao" name="pagamento" value="cartao" required>
+                                        <input type="radio" id="pagamentocartao" name="pagamento" value="cartao" >
                                         <label for="pagamento-cartao">Cartão de Crédito/Débito</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="pagamento-pix" name="pagamento" value="pix">
+                                        <input type="radio" id="pagamentopix" name="pagamento" value="pix">
                                         <label for="pagamento-pix">Pix</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="pagamento-boleto" name="pagamento" value="boleto">
+                                        <input type="radio" id="pagamentoboleto" name="pagamento" value="boleto">
                                         <label for="pagamento-boleto">Boleto Bancário</label>
                                     </div>
                                 </div>
                             </div>
-
+                    
                             <div class="payment-fields" id="campos-cartao">
                                 <h5>Informações do Cartão:</h5>
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="numero-cartao" id="numero-cartao" class="form-control" placeholder="Número do Cartão" pattern="\d{16}" required="">
+                                    <input type="text" name="numerocartao" id="numero-cartao" class="form-control" placeholder="Número do Cartão">
                                     <label for="numero-cartao">Número do Cartão</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="nome-cartao" id="nome-cartao" class="form-control" placeholder="Nome no Cartão" required="">
+                                    <input type="text" name="nomecartao" id="nome-cartao" class="form-control" placeholder="Nome no Cartão" >
                                     <label for="nome-cartao">Nome no Cartão</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="validade-cartao" id="validade-cartao" class="form-control" placeholder="Validade (MM/AA)" pattern="\d{2}/\d{2}" required="">
+                                    <input type="text" name="validadecartao" id="validade-cartao" class="form-control" placeholder="Validade (MM/AA)" >
                                     <label for="validade-cartao">Validade (MM/AA)</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="cvv-cartao" id="cvv-cartao" class="form-control" placeholder="CVV" pattern="\d{3}" required="">
+                                    <input type="text" name="cvvcartao" id="cvv-cartao" class="form-control" placeholder="CVV">
                                     <label for="cvv-cartao">CVV</label>
                                 </div>
                             </div>
-
+                    
                             <div class="payment-fields" id="campos-pix">
                                 <h5>Informações do Pix:</h5>
                                 <div class="form-floating mb-3">
-                                    <input type="text" name="chave-pix" id="chave-pix" class="form-control" placeholder="Chave Pix" required="">
+                                    <input type="text" name="chavepix" id="chave-pix" class="form-control" placeholder="Chave Pix">
                                     <label for="chave-pix">Chave Pix</label>
                                 </div>
                             </div>
-
+                    
                             <div class="payment-fields" id="campos-boleto">
                                 <h5>Informações do Boleto:</h5>
                                 <p>O boleto será gerado e enviado para o seu e-mail.</p>
                             </div>
-
+                    
                             <div class="col-lg-4 col-12 ms-auto">
                                 <button type="submit" class="form-control">Enviar</button>
                             </div>
-
                         </div>
                     </form>
                 </div>

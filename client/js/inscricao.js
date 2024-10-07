@@ -1,35 +1,61 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const eventSelect = document.getElementById('evento');
+const eventSelect = document.getElementById("evento");
+const form = document.getElementById("inscricaoForm");
+let events = [];
 
-    // Função para converter data no formato DD/MM/YYYY para um formato legível
-    function formatDate(dateString) {
-        const [day, month, year] = dateString.split('/').map(Number);
-        const date = new Date(year, month - 1, day);
-        return date.toLocaleDateString(); // Formata a data no formato local
+// Função para converter data no formato DD/MM/YYYY para um formato legível
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  if (isNaN(date)) {
+    return "Invalid Date";
+  }
+  return date.toLocaleDateString(); // Formata a data no formato local
+}
+
+// Função para carregar eventos no select
+function loadEvents(events) {
+  console.log(events);
+  events.forEach((event) => {
+    const option = document.createElement("option");
+    option.value = Number(event.EventoID);
+    option.textContent = `${event.NomeEvento} - ${formatDate(event.DataHora)}`;
+    eventSelect.appendChild(option);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const response = await fetch("http://localhost:3000/events");
+    if (!response.ok) {
+      throw new Error("Erro ao carregar eventos");
     }
-
-    // Função para carregar eventos no select
-    function loadEvents(events) {
-        events.forEach(event => {
-            const option = document.createElement('option');
-            option.value = event.title;
-            option.textContent = `${event.title} - ${formatDate(event.date)}`;
-            eventSelect.appendChild(option);
-        });
-    }
-
-    // Requisição para carregar o arquivo JSON de eventos
-    fetch('../data/index/eventos.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao carregar o arquivo JSON');
-            }
-            return response.json();
-        })
-        .then(data => {
-            loadEvents(data.events);
-        })
-        .catch(error => {
-            console.error('Erro ao carregar eventos:', error);
-        });
+    const data = await response.json();
+    events = data
+    loadEvents(data);
+  } catch (error) {
+    console.error("Erro ao carregar eventos:", error);
+  }
 });
+
+form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const inputs = Object.fromEntries(new FormData(form));
+    const ingresso = {
+        qrCode: "https://via.placeholder.com/100x100.png?text=QR+Code",
+        price: "R$ 565,00",
+        cpf: inputs.cpf,
+        transaction: "CHAR_C68ER45-89RW-5T6W-CV67-963243TYYU7I9",
+        instructions: "Mostre o voucher no seu smartphone ou impresso, acompanhado de um documento oficial válido com foto. Certifique-se de que o código de barras esteja legível."
+    };
+
+    const response = await fetch(`http://localhost:3000/inscricao/new/${inputs.evento}/1`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(ingresso),
+    })
+    if (!response.ok) {
+        throw new Error("Erro ao criar inscrição");
+    }
+    alert("inscrição feita com sucesso");
+})
