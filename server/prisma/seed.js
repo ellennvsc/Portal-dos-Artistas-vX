@@ -1,5 +1,8 @@
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
+
+const saltRounds = 10;
 
 async function main() {
   const events = [
@@ -38,6 +41,8 @@ async function main() {
   ];
 
   for (const event of events) {
+    event.owner.create.Senha = await bcrypt.hash(event.owner.create.Senha, saltRounds);
+
     await prisma.evento.create({
       data: event
     });

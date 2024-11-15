@@ -13,4 +13,13 @@ async function criarUser({ name, email, password, phone, birth }) {
   return user;
 }
 
-export default { criarUser }; // Exportar a função criarUser
+async function readUser(email) {
+  const user = await prisma.usuario.findUnique({
+    where: {
+      Email: email,
+    },
+  });
+  return user;
+}
+
+export default { criarUser, readUser }; // Exportar a função criarUser

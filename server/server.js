@@ -2,6 +2,8 @@ import express from 'express';
 import morgan from 'morgan'
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import 'dotenv/config';
+
 import rotas from './src/routes/routes.js'
 
 const app = express();
