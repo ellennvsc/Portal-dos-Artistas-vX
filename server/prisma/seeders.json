@@ -1,0 +1,44 @@
+{
+  "events": [
+    {
+      "date": "22/09/2024",
+      "title": "Rock in Rio",
+      "description": "Coldplay mais uma vez oferecendo um show enérgico e emocionante com seus grandes sucessos no Rock in Rio!",
+      "organizer": {
+        "name": "Coldplay",
+        "role": "Banda",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoNWOknHg4B6Wkc46Tcb1IE4eOfwra1FzLjw&s",
+        "verifiedImage": "../images/verified.png"
+      },
+      "image": "https://cdn.rockinrio.com/wp-content/uploads/2020/09/whatsapp-image-2020-09-28-at-12-13-54.jpeg",
+      "detailsLink": "../views/descricao.html",
+      "inscriptionLink": "../views/inscricao.html",
+      "stats": {
+        "likes": "42.5k",
+        "comments": "11k",
+        "downloads": "50k"
+      }
+    },
+    {
+      "date": "20/11/2024",
+      "title": "The Town",
+      "description": "O fenômeno global Bruno Mars está chegando para uma apresentação exclusiva no The Town!",
+      "organizer": {
+        "name": "Bruno Mars",
+        "role": "Cantor",
+        "image": "https://i.scdn.co/image/ab6761610000e5ebc36dd9eb55fb0db4911f25dd",
+        "verifiedImage": "../images/verified.png"
+      },
+      "image": "https://igormiranda.com.br/wp-content/uploads/2022/09/The-Town-foto-Filipe-Marques-min.jpg",
+      "detailsLink": "../views/descricao.html",
+      "inscriptionLink": "../views/inscricao.html",
+      "stats": {
+        "likes": "37.5k",
+        "comments": "10k",
+        "downloads": "50k"
+      }
+    }
+  ],
+  "usuarios": [],
+  "inscricoesEventos":[]
+}

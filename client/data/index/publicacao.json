@@ -1,0 +1,9 @@
+{
+	"eventName": "Nome do Evento",
+	"eventDateTime": "2023-10-01T10:00",
+	"eventLocation": "Localização do Evento",
+	"eventDescription": "Descrição detalhada do evento",
+	"eventOrganizer": "Nome do Organizador, Contato",
+	"ticketInfo": "Informações sobre ingressos",
+	"eventImage": "Nome do arquivo da imagem"
+}

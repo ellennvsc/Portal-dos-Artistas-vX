@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Inscrição</title>
+
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Sono:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/filtro.css">  
+        <link rel="stylesheet" href="../css/bootstrap-icons.css">
+        <link rel="stylesheet" href="../css/owl.carousel.min.css">
+        <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="../css/templatemo-pod-talk.css" >
+    </head>
+
+    <body>
+        <main>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand me-lg-5 me-0" href="index.html">
+                        <!-- imagem (logo) de cima -->
+                        <img src="../images/nav-logo.png" class="logo-image img-fluid" alt="templatemo pod talk">
+                    </a>
+        
+                    <!-- -- nav bar -- -->
+                    <form action="#" method="get" class="custom-form search-form flex-fill me-3" role="search">
+                        <div class="input-group input-group-lg">
+                            <input name="search" type="search" class="form-control" id="search"
+                                placeholder="Pesquisar eventos" aria-label="Search">
+        
+                             <!-- Ícone de filtro -->
+                       <button type="button" class="btn btn-primary" id="filter-icon">
+                        <i class="bi-funnel"></i>
+                    </button>
+
+                    <!-- Formulário de filtro -->
+                    <div id="filterFormContainer"  class="filter-form-container" style="display: none;">
+                        <form id="filterForm">
+                            <label for="category">Categoria Artística:</label>
+                            <input type="text" id="category" name="category"><br>
+
+                            <label for="location">Localização:</label>
+                            <input type="text" id="location" name="location"><br>
+
+                            <label for="date">Data:</label>
+                            <input type="date" id="date" name="date"><br>
+
+                            <button type="submit" class="filterForm button">Filtrar</button>
+                        </form>
+                    </div>
+
+                    <!-- Botão de submit com ícone de busca -->
+                    <button type="submit" class="form-control" id="submit">
+                        <i class="bi-search"></i>
+                    </button>
+
+                    <!-- Div para exibir os resultados da busca -->
+                    <div id="resultadoBusca" class="resultado-busca mt-3">
+                        <!-- Resultados da busca aparecerão aqui -->
+                    </div>
+
+                    <script>
+                        document.getElementById('filter-icon').addEventListener('click', function() {
+                            const filterFormContainer = document.getElementById('filterFormContainer');
+                            filterFormContainer.style.display = filterFormContainer.style.display === 'none' ? 'block' : 'none';
+                        });
+                    </script>
+            </form>
+        
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+        
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.html">Home</a>
+                            </li>
+        
+                             <!-- <li class="nav-item">
+                            <a class="nav-link" href="sobrenos.html">Sobre nós</a>
+                        </li> -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Eventos</a>
+        
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="publicacao.html">Publicação</a></li>
+                                    <li><a class="dropdown-item" href="inscricao.html">Inscrição</a></li>
+                                    <li><a class="dropdown-item" href="descricao.html">Descrição</a></li>
+                                    <li><a class="dropdown-item" href="calendario.html">Calendário</a></li>
+                                </ul>
+                            </li>
+        
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">Contato</a>
+                            </li>
+                            
+                            <li class="nav-item" id="auth-link">
+                                <a class="nav-link" href="./user.html">
+                                    <i class="bi bi-person"></i> Login
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-12 text-center">
+                            <h2 class="mb-0">Publicação</h2>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section id="loading-div" class="w-100 justify-content-center align-items-center" style="height: 50vh; display: flex;">
+                <h1>Carregando...</h1>
+            </section>
+
+            <section class="contact-section section-padding pt-0" id="content-div" style="display: none;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <div class="section-title-wrap mb-5">
+                                <h4 class="section-title">Formulário de publicação.</h4>
+                            </div>
+                            
+                            <form id="eventForm" action="/api/eventos" method="post" class="custom-form contact-form" role="form">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="NomeEvento" id="NomeEvento" class="form-control" placeholder="Nome do Evento" required>
+                                            <label for="NomeEvento">Nome do Evento</label>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="form-floating">
+                                            <input type="datetime-local" name="DataHora" id="DataHora" class="form-control" placeholder="Data e Hora" required>
+                                            <label for="DataHora">Data e Hora</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="form-floating">
+                                    <input type="text" name="Localizacao" id="Localizacao" class="form-control" placeholder="Localização" required>
+                                    <label for="Localizacao">Localização</label>
+                                </div>
+                            
+                                <div class="form-floating">
+                                    <textarea name="Descricao" id="Descricao" class="form-control" placeholder="Descrição do Evento" rows="3" required></textarea>
+                                    <label for="Descricao">Descrição do Evento</label>
+                                </div>
+                            
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="Organizador" id="Organizador" class="form-control" placeholder="Nome do Organizador" required>
+                                            <label for="Organizador">Nome do Organizador</label>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="InfoIngresso" id="InfoIngresso" class="form-control" placeholder="Informações de Ingresso (opcional)">
+                                            <label for="InfoIngresso">Informações de Ingresso (opcional)</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div class="form-floating">
+                                    <input type="text" name="ImagemCartaz" id="ImagemCartaz" class="form-control" placeholder="URL da Imagem do Cartaz">
+                                    <label for="ImagemCartaz">URL da Imagem do Cartaz</label>
+                                </div>
+                            
+                                <div class="form-floating">
+                                    <input type="date" name="DataPublicacao" id="DataPublicacao" class="form-control" placeholder="Data de Publicação" required>
+                                    <label for="DataPublicacao">Data de Publicação</label>
+                                </div>
+                            
+                                <button type="submit" class="form-control">Enviar para Aprovação</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">   
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                        <div class="subscribe-form-wrap">
+                            <h6>Contato rápido</h6>
+                            <form class="custom-form subscribe-form" action="#" method="get" role="form">
+                                <input type="email" name="subscribe-email" id="subscribe-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="sua mensagem" required="">
+                                <div class="col-lg-12 col-12">
+                                    <button type="submit" class="form-control" id="submit">Enviar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12 mb-4 mb-md-0 mb-lg-0">
+                        <h6 class="site-footer-title mb-3">Contato</h6>
+                        <p class="mb-2"><strong class="d-inline me-2">Telefone:</strong> (83)9123-4567</p>
+                        <p>
+                            <strong class="d-inline me-2">Email:</strong>
+                            <a href="#">portal.artistas@gmail.com</a> 
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <h6 class="site-footer-title mb-3">Download App</h6>
+                        <div class="site-footer-thumb mb-4 pb-2">
+                            <div class="d-flex flex-wrap">
+                                <a href="#">
+                                    <img src="../images/app-store.png" class="me-3 mb-2 mb-lg-0 img-fluid" alt="">
+                                </a>
+                                <a href="#">
+                                    <img src="../images/play-store.png" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+                        <h6 class="site-footer-title mb-3">Social</h6>
+                        <ul class="social-icon">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-instagram"></a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-twitter"></a>
+                            </li>
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-whatsapp"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container pt-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-3 col-12">
+                        <a class="navbar-brand" href="index.html">
+                        </a>
+                    </div>                  
+
+                    <div class="col-lg-3 col-12">
+                        <p class="copyright-text mb-0">Copyright © 2036 Talk Pod Company
+                        <br><br>
+                        Design: <a rel="nofollow" href="https://templatemo.com/page/1" target="_parent">TemplateMo</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+         <script src="../js/protect.js"></script>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script src="../js/custom.js"></script>
+        <script src="../js/eventos.js"></script>
+        <script src="../js/eventosant.js"></script>
+        <script src="../js/filtro.js"></script>
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/owl.carousel.min.js"></script>
+        <script src="../js/publicacao.js"></script>
+        <script src="../js/carrossel.js"></script>
+    </body>
+</html>

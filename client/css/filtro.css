@@ -1,0 +1,68 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#filter-icon {
+    margin-bottom: 20px;
+}
+
+.filter-form-container {
+    display: none;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 45px; /* Ajuste conforme necessário */
+    right: 320px; /* Ajuste conforme necessário */
+    z-index: 1000; /* Para garantir que o formulário fique acima de outros elementos */
+}
+
+#filterForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#filterForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#filterForm input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#filterForm button {
+    background-color: #007bff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: auto; /* Ajusta o tamanho do botão ao conteúdo */
+    align-self: flex-start; /* Alinha o botão à esquerda */
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+}
+
+.evento-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.evento-item img {
+    max-width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.evento-item h2 {
+    margin-top: 0;
+}
+

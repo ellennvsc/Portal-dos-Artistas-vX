@@ -1,0 +1,24 @@
+{
+    "eventos": [
+      {
+        "id": 1,
+        "titulo": "Rock in Rio - Coldplay",
+        "data": "22/09/2024",
+        "descricao": "Prepare-se para uma noite inesquecível! A banda britânica Coldplay, conhecida por seus shows eletrizantes e emocionantes, estará no palco do Rock in Rio 2024. Venha cantar junto com Chris Martin e companhia seus maiores sucessos como 'The Scientist', 'Fix You', 'Yellow' e muitos outros.",
+        "local": "Parque Olímpico, Rio de Janeiro",
+        "imagem": "images/events.desc/coldplay1.jpg",
+        "inscricaoLink": "../views/inscricao.html"
+      },
+      {
+        "id": 2,
+        "titulo": "Show Imperdível: Bruno Mars no THE TOWN",
+        "data": "20/11/2024",
+        "descricao": "Bruno Mars, o astro internacional e vencedor de vários Grammy Awards, aterrissa no Brasil para uma apresentação única e inesquecível no The Town! Com hits como 'Uptown Funk,' 'Locked Out of Heaven,' e 'Treasure,' Bruno Mars vai agitar o público com sua voz poderosa e performances energéticas.",
+        "local": "Palco Skyline, São Paulo",
+        "imagem": "../images/events.desc/brunomars.jpg",
+        "inscricaoLink": "../views/inscricao.html"
+      }
+      // Adicione mais eventos conforme necessário
+    ]
+  }
+  

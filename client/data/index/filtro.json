@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "nome": "The Town",
+        "data": "2024-09-10",
+        "local": "São Paulo",
+        "descricao": "Um grande evento em São Paulo"
+    },
+    {
+        "id": 2,
+        "nome": "Imagineland",
+        "data": "2024-10-12",
+        "local": "Rio de Janeiro",
+        "descricao": "Evento cultural no Rio"
+    },
+    {
+        "id": 3,
+        "nome": "Desmantello do Nattan",
+        "data": "2024-11-15",
+        "local": "Brasília",
+        "descricao": "Conferência nacional em Brasília"
+    }
+]
+
