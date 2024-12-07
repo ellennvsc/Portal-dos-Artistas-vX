@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import { isAuthenticated } from "../middleware/auth.js";
+import { validate } from "../middleware/validate.js";
+import { z } from "zod";
 
 //models
 import users from "../models/users.js";
@@ -25,7 +27,15 @@ router.get("/events", async (req, res) => {
 
 //cadastro
 // cria usuario
-router.post("/register", async (req, res) => {
+router.post("/register", validate(z.object({
+  body: z.object({
+    name: z.string(),
+    email: z.string().email(),
+    phone: z.string().min(11),
+    birth: z.string(),
+    password: z.string().min(6),
+  }),
+})), async (req, res) => {
   try {
     //dados enviados
     const data = req.body;  
@@ -45,6 +55,9 @@ router.post("/register", async (req, res) => {
 
     res.status(201).json(newUser);
   } catch (e) {
+    if (e.code === "P2002") {
+      return res.status(400).json({ "erro":"Email já cadastrado" });
+    }
     console.log(e);
     res.status(500).send("algo deu errado");
   }
@@ -53,10 +66,22 @@ router.post("/register", async (req, res) => {
 //inscricao >>> ingresso
 //cria ingresso
 //relacionar com usuario a partir da tabela de relacionamento
-router.post("/inscricao/new/:eventId/:userId", async (req, res) => {
+router.post("/inscricao/new/:eventId", isAuthenticated, validate(z.object({
+  body: z.object({
+    qrCode: z.string(),
+    cpf: z.string().min(11),
+    price: z.string(),
+    transaction: z.string(),
+    instructions: z.string(),
+  }),
+  params: z.object({
+    eventId: z.string(),
+  }),
+})), async (req, res) => {
   try {
     const data = req.body;
-    const { eventId, userId } = req.params;
+    const userId = req.userId;
+    const { eventId } = req.params;
     console.log(data);
 
     //etapa 1: criar ingresso
@@ -77,15 +102,16 @@ router.post("/inscricao/new/:eventId/:userId", async (req, res) => {
 });
 
 //login
-router.post("/login", async (req, res) => {
+router.post("/login", validate(z.object({
+  body: z.object({
+    loginEmail: z.string().email(),
+    loginPassword: z.string().min(6),
+  }),
+})), async (req, res) => {
   try {
     //dados enviados do FrontEnd
     //os inputs de email e senha
     const { loginEmail, loginPassword } = req.body;
-
-    if( !loginEmail || !loginPassword ){
-      return res.status(403).json({"erro":"Email ou senha não informados"});
-    } 
     console.log(req.body)
     const user = await users.readUser(loginEmail); //procurando usuario com email
     if (!user) {
@@ -93,14 +119,14 @@ router.post("/login", async (req, res) => {
     }
 
     //comparando as senhas
-    //utilizando o bcrypt para comparar as senhas criptografadas
+    //utilizando o bcrypt para compara as senhas criptografadas
     if (await bcrypt.compare(loginPassword, user.Senha)) {
       //criando token
       const token = jwt.sign({ userId: user.UsuarioID }, process.env.JWT_SECRET);
       //separando senha do usuario
       delete user.Senha;
 
-      //retornando token e usuario
+      //retornando token e usuarii
       return res.status(200).json({ token, user, isValid:true });
     }
 

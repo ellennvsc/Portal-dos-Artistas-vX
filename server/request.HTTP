@@ -1,10 +1,20 @@
 @domain = http://localhost:3000
+@token = {{login.response.body.token}}
 
 ###
 GET {{domain}}/events
 
-###
+###login
+# @name login
+POST {{domain}}/login
+Content-Type: application/json
 
+{
+    "loginEmail": "ellene@gmail.com",
+    "loginPassword": "123456"
+}
+
+###
 POST {{domain}}/register
 Content-Type: application/json
 
@@ -17,8 +27,9 @@ Content-Type: application/json
 }
 
 ###
-POST {{domain}}/inscricao/new/1/1
+POST {{domain}}/inscricao/new/1
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "qrCode": "https://via.placeholder.com/100x100.png?text=QR+Code",
@@ -27,17 +38,3 @@ Content-Type: application/json
     "transaction": "CHAR_C68ER45-89RW-5T6W-CV67-963243TYYU7I9",
     "instructions": "Mostre o voucher no seu smartphone ou impresso, acompanhado de um documento oficial válido com foto. Certifique-se de que o código de barras esteja legível."
 } 
-
-### login
-# @name login
-POST {{domain}}/login
-Content-Type: application/json
-
-{
-    "loginEmail": "coldplay@example.com",
-    "loginPassword": "password"
-}
-
-### VERIFY-AUTH
-GET {{domain}}/verify-auth
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTczMTkzMTE3Nn0.KCh1R7uS5nN2WSlkGU32riiiKAj13aEjEBMBsbAv1WU
