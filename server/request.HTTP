@@ -27,6 +27,18 @@ Content-Type: application/json
 }
 
 ###
+POST {{domain}}/register
+Content-Type: application/json
+
+{
+    "name": "ellen vitoria",
+    "email": "",
+    "password": "123456",
+    "phone": "839999999999",
+    "birth": "2007-08-21"
+}
+
+###
 POST {{domain}}/inscricao/new/1
 Content-Type: application/json
 Authorization: Bearer {{token}}

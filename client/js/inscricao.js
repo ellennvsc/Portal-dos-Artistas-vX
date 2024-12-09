@@ -47,10 +47,11 @@ form.addEventListener("submit", async (event) => {
         instructions: "Mostre o voucher no seu smartphone ou impresso, acompanhado de um documento oficial válido com foto. Certifique-se de que o código de barras esteja legível."
     };
 
-    const response = await fetch(`http://localhost:3000/inscricao/new/${inputs.evento}/1`, {
+    const response = await fetch(`http://localhost:3000/inscricao/new/${inputs.evento}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify(ingresso),
     })
