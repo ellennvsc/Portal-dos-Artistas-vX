@@ -14,6 +14,8 @@ npm install
 npx prisma migrate dev --name init
 ```
 
+### crie o .env baseado do no .env.example
+
 ### Inicie o servidor
 
 ```shell

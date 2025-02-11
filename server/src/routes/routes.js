@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import multer from "multer";
 
 import { isAuthenticated } from "../middleware/auth.js";
 import { validate } from "../middleware/validate.js";
@@ -13,6 +14,7 @@ import tickets from "../models/tickets.js";
 
 //services
 import emailSend from "../utils/emailSend.js";
+import uploadConfig from "../middleware/multer.js";
 
 const router = express.Router();
 const saltRounds = Number(10);
@@ -145,6 +147,21 @@ router.post("/login", validate(z.object({
   } catch (e) {
     console.log(e);
     res.status(500).json({"erro":"algo deu errado"});
+  }
+});
+
+router.post('/new/event', isAuthenticated, multer(uploadConfig).single("imagem"), async (req, res) => {
+  try {
+    const data = req.body;
+    const imagem = `../images/profile/${req.file.filename}`;
+    const event = { ...data, DataHora: new Date(data.DataHora), DataPublicacao: new Date(data.DataPublicacao), ImagemCartaz: imagem, ownerID: req.userId };
+    console.log(event);
+  
+    const newEvent = await events.create(event);
+    res.status(201).json("OK");
+  } catch (e) {
+    console.log(e);
+    res.status(500).send("algo deu errado");
   }
 });
 

@@ -8,4 +8,10 @@ async function readAll(){
     });
 }
 
-export default { readAll }
+async function create(event){
+    return await prisma.evento.create({
+        data: event
+    });
+}
+
+export default { readAll, create }
