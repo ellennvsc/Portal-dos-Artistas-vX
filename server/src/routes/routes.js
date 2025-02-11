@@ -11,6 +11,9 @@ import users from "../models/users.js";
 import events from "../models/events.js";
 import tickets from "../models/tickets.js";
 
+//services
+import emailSend from "../utils/emailSend.js";
+
 const router = express.Router();
 const saltRounds = Number(10);
 
@@ -53,6 +56,9 @@ router.post("/register", validate(z.object({
       birth: userData.birth,
     });
 
+    //enviando email de boas vindas
+    emailSend.userGreetings(userData.email);
+
     res.status(201).json(newUser);
   } catch (e) {
     if (e.code === "P2002") {
@@ -93,6 +99,10 @@ router.post("/inscricao/new/:eventId", isAuthenticated, validate(z.object({
     //etapa 4: relacionar com usuario
     const inscricao = await tickets.createInscricao(eventId, userId);
     console.log(inscricao);
+
+    //enviando email de confirmação de ingresso
+    const user = await users.readUserById(userId);
+    emailSend.reserveTicket(user.Email);
 
     res.status(201).json({ ingresso, inscricao });
   } catch (e) {
