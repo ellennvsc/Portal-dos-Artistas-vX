@@ -44,7 +44,7 @@ router.post("/register", validate(z.object({
   try {
     //dados enviados
     const data = req.body;  
-    console.log(data);
+    //console.log(data);
     //separandos senha dos resto dos dados do usuario
     const { password, ...userData } = data;
     //criptografando senha separada
@@ -90,7 +90,7 @@ router.post("/inscricao/new/:eventId", isAuthenticated, validate(z.object({
     const data = req.body;
     const userId = req.userId;
     const { eventId } = req.params;
-    console.log(data);
+    //console.log(data);
 
     //etapa 1: criar ingresso
     //etapa 2: relacionar ingresso e usuario
@@ -117,7 +117,7 @@ router.post("/inscricao/new/:eventId", isAuthenticated, validate(z.object({
 router.post("/login", validate(z.object({
   body: z.object({
     loginEmail: z.string().email(),
-    loginPassword: z.string().min(6),
+    loginPassword: z.string(),
   }),
 })), async (req, res) => {
   try {
